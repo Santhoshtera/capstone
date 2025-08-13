@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VESTE - Real Estate Solutions</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <i class="fas fa-home"></i>
+                <h1>VESTE</h1>
+            </div>
+            <nav class="nav">
+                <a href="#home">Home</a>
+                <a href="#properties">Properties</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Hero Section -->
+            <section class="hero" id="home">
+                <div class="hero-content">
+                    <h1>Welcome to VESTE</h1>
+                    <p>Your trusted partner in real estate solutions</p>
+                    <button class="cta-button" onclick="showLoginModal()">Get Started</button>
+                </div>
+            </section>
+
+            <!-- Login Modal -->
+            <div id="loginModal" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeLoginModal()">&times;</span>
+                    <div class="login-container">
+                        <h2>Choose Your Role</h2>
+                        
+                        <!-- Admin Login -->
+                        <div class="role-login-card">
+                            <div class="role-header">
+                                <i class="fas fa-user-shield"></i>
+                                <h3>Administrator</h3>
+                            </div>
+                            <form class="role-form" onsubmit="handleRoleLogin(event, 'admin')">
+                                <div class="form-group">
+                                    <label for="admin-username">Username</label>
+                                    <input type="text" id="admin-username" name="username" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="admin-password">Password</label>
+                                    <input type="password" id="admin-password" name="password" required>
+                                </div>
+                                <button type="submit" class="role-login-btn admin-btn">
+                                    <i class="fas fa-sign-in-alt"></i> Login as Admin
+                                </button>
+                            </form>
+                        </div>
+
+                        <!-- Agent Login -->
+                        <div class="role-login-card">
+                            <div class="role-header">
+                                <i class="fas fa-user-tie"></i>
+                                <h3>Real Estate Agent</h3>
+                            </div>
+                            <form class="role-form" onsubmit="handleRoleLogin(event, 'agent')">
+                                <div class="form-group">
+                                    <label for="agent-username">Username</label>
+                                    <input type="text" id="agent-username" name="username" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="agent-password">Password</label>
+                                    <input type="password" id="agent-password" name="password" required>
+                                </div>
+                                <button type="submit" class="role-login-btn agent-btn">
+                                    <i class="fas fa-sign-in-alt"></i> Login as Agent
+                                </button>
+                            </form>
+                        </div>
+
+                        <!-- Customer Login -->
+                        <div class="role-login-card">
+                            <div class="role-header">
+                                <i class="fas fa-user"></i>
+                                <h3>Customer</h3>
+                            </div>
+                            <form class="role-form" onsubmit="handleRoleLogin(event, 'customer')">
+                                <div class="form-group">
+                                    <label for="customer-username">Username</label>
+                                    <input type="text" id="customer-username" name="username" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="customer-password">Password</label>
+                                    <input type="password" id="customer-password" name="password" required>
+                                </div>
+                                <button type="submit" class="role-login-btn customer-btn">
+                                    <i class="fas fa-sign-in-alt"></i> Login as Customer
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dashboard Modal -->
+            <div id="dashboardModal" class="modal">
+                <div class="modal-content dashboard-content">
+                    <span class="close" onclick="closeDashboard()">&times;</span>
+                    <div class="dashboard-header">
+                        <h2 id="dashboardTitle">Dashboard</h2>
+                        <button class="logout-btn" onclick="logout()">Logout</button>
+                    </div>
+                    <div class="dashboard-body" id="dashboardBody">
+                        <!-- Dashboard content will be loaded here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Properties Section -->
+            <section class="properties" id="properties">
+                <h2>Featured Properties</h2>
+                <div class="property-grid">
+                    <div class="property-card">
+                        <div class="property-image">
+                            <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Luxury Home">
+                        </div>
+                        <div class="property-info">
+                            <h3>Luxury Villa</h3>
+                            <p class="price">$850,000</p>
+                            <p class="location"><i class="fas fa-map-marker-alt"></i> Beverly Hills, CA</p>
+                            <p class="details">4 Beds • 3 Baths • 2,500 sqft</p>
+                        </div>
+                    </div>
+                    <div class="property-card">
+                        <div class="property-image">
+                            <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2075&q=80" alt="Modern Apartment">
+                        </div>
+                        <div class="property-info">
+                            <h3>Modern Apartment</h3>
+                            <p class="price">$450,000</p>
+                            <p class="location"><i class="fas fa-map-marker-alt"></i> Downtown LA</p>
+                            <p class="details">2 Beds • 2 Baths • 1,200 sqft</p>
+                        </div>
+                    </div>
+                    <div class="property-card">
+                        <div class="property-image">
+                            <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2053&q=80" alt="Family Home">
+                        </div>
+                        <div class="property-info">
+                            <h3>Family Home</h3>
+                            <p class="price">$650,000</p>
+                            <p class="location"><i class="fas fa-map-marker-alt"></i> Pasadena, CA</p>
+                            <p class="details">3 Beds • 2.5 Baths • 1,800 sqft</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- About Section -->
+            <section class="about" id="about">
+                <h2>About VESTE</h2>
+                <p>VESTE is your premier real estate platform, connecting buyers, sellers, and agents in a seamless digital experience. Our mission is to make real estate transactions simple, transparent, and efficient.</p>
+                <div class="features">
+                    <div class="feature">
+                        <i class="fas fa-search"></i>
+                        <h3>Find Your Dream Home</h3>
+                        <p>Browse thousands of properties with detailed information and virtual tours.</p>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-handshake"></i>
+                        <h3>Expert Agents</h3>
+                        <p>Connect with experienced real estate professionals who understand your needs.</p>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-shield-alt"></i>
+                        <h3>Secure Transactions</h3>
+                        <p>Safe and secure platform for all your real estate transactions.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contact Section -->
+            <section class="contact" id="contact">
+                <h2>Contact Us</h2>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <p>+1 (555) 123-4567</p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <p>info@veste.com</p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <p>123 Real Estate Ave, Los Angeles, CA 90210</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2024 VESTE. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
